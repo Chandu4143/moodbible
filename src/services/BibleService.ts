@@ -19,7 +19,7 @@ class BibleService {
     private data: any[];
 
     constructor() {
-        this.data = bibleData;
+        this.data = bibleData as any[];
     }
 
     getVerse(ref: VerseReference): Verse | null {
@@ -41,6 +41,24 @@ class BibleService {
             verse: ref.verse,
             reference: `${bookName} ${ref.chapter}:${ref.verse}`
         };
+    }
+
+    getChapter(bookAbbrev: string, chapter: number): Verse[] {
+        const bookData = this.data.find((b: any) => b.abbrev.toLowerCase() === bookAbbrev.toLowerCase());
+        if (!bookData) return [];
+
+        const chapterData = bookData.chapters[chapter - 1];
+        if (!chapterData) return [];
+
+        const bookName = getBookName(bookAbbrev);
+
+        return chapterData.map((text: string, index: number) => ({
+            text,
+            book: bookName,
+            chapter: chapter,
+            verse: index + 1,
+            reference: `${bookName} ${chapter}:${index + 1}`
+        }));
     }
 
     // Simple search fallback

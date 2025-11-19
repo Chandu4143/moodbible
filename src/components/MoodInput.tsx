@@ -46,11 +46,11 @@ export const MoodInput: React.FC<MoodInputProps> = ({ onMoodSelect, onSearch }) 
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Type how you feel..."
-                    className="w-full bg-white border-b-2 border-secondary-light/30 text-2xl md:text-3xl py-4 px-2 text-center focus:outline-none focus:border-primary transition-colors placeholder:text-gray-300 font-serif text-text"
+                    className="w-full bg-white/80 backdrop-blur-sm border border-secondary/20 rounded-full text-2xl md:text-3xl py-6 px-12 text-center focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/5 transition-all shadow-sm placeholder:text-gray-300 font-serif text-text"
                 />
                 <button
                     type="submit"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors"
+                    className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors p-2"
                 >
                     <Search size={24} />
                 </button>
